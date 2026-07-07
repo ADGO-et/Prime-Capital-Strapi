@@ -1,0 +1,38 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_page",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page",
+    "description": "Editable text for the homepage sections below the hero slider"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "introTitle": {
+      "type": "string",
+      "required": true
+    },
+    "introText": {
+      "type": "text",
+      "required": true
+    },
+    "strengths": {
+      "type": "component",
+      "component": "shared.title-description",
+      "repeatable": true
+    },
+    "strategicExcellenceHeading": {
+      "type": "string",
+      "default": "Strategic Excellence at the Heart of Ethiopia's Transformation",
+      "required": true
+    },
+    "strategicExcellenceText": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

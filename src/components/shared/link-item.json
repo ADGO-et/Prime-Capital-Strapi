@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_shared_link_items",
+  "info": {
+    "displayName": "Link",
+    "description": "A label paired with a URL, e.g. a document or website link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

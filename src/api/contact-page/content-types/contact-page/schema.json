@@ -1,0 +1,49 @@
+{
+  "kind": "singleType",
+  "collectionName": "contact_page",
+  "info": {
+    "singularName": "contact-page",
+    "pluralName": "contact-pages",
+    "displayName": "Contact Page",
+    "description": "Editable contact details for the Contact Us page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "address": {
+      "type": "text",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "weekdayHours": {
+      "type": "string",
+      "required": true,
+      "default": "Monday - Friday, 8:00 AM - 5:00 PM EAT"
+    },
+    "saturdayHours": {
+      "type": "string",
+      "default": "Saturday, 8:00 AM - 12:00 PM EAT"
+    },
+    "mapEmbedUrl": {
+      "type": "string",
+      "required": true
+    },
+    "newClientInquiriesText": {
+      "type": "text",
+      "required": true
+    },
+    "careerOpportunitiesText": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

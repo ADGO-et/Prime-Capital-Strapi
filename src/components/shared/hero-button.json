@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_shared_hero_buttons",
+  "info": {
+    "displayName": "Hero Button",
+    "description": "A call-to-action button shown on a hero slide"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary"
+      ],
+      "default": "primary",
+      "required": true
+    }
+  }
+}

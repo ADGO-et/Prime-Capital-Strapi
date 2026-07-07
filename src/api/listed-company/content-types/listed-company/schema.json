@@ -1,0 +1,102 @@
+{
+  "kind": "collectionType",
+  "collectionName": "listed_companies",
+  "info": {
+    "singularName": "listed-company",
+    "pluralName": "listed-companies",
+    "displayName": "Listed Company",
+    "description": "Companies listed on the exchange, shown on the Listed Companies page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "symbol": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "companyName": {
+      "type": "string",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "marketClassification": {
+      "type": "string",
+      "default": "Main Market",
+      "required": true
+    },
+    "listedCapital": {
+      "type": "string",
+      "required": true
+    },
+    "listedCapitalIncludingPremium": {
+      "type": "string"
+    },
+    "listedShares": {
+      "type": "string",
+      "required": true
+    },
+    "shareholders": {
+      "type": "string",
+      "required": true
+    },
+    "securityType": {
+      "type": "string",
+      "default": "Equity – Ordinary Shares"
+    },
+    "natureOfBusiness": {
+      "type": "string"
+    },
+    "yearOfFormation": {
+      "type": "string"
+    },
+    "dateOfIncorporation": {
+      "type": "string"
+    },
+    "dateListed": {
+      "type": "string"
+    },
+    "companyAddress": {
+      "type": "text"
+    },
+    "telephone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "website": {
+      "type": "string"
+    },
+    "auditor": {
+      "type": "string"
+    },
+    "boardOfDirectors": {
+      "type": "component",
+      "component": "shared.list-item",
+      "repeatable": true
+    },
+    "sector": {
+      "type": "string"
+    },
+    "subSector": {
+      "type": "string"
+    },
+    "prospectus": {
+      "type": "component",
+      "component": "shared.link-item",
+      "repeatable": false
+    },
+    "financialStatements": {
+      "type": "component",
+      "component": "shared.link-item",
+      "repeatable": true
+    }
+  }
+}

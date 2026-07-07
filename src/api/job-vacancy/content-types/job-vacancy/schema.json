@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "job_vacancies",
+  "info": {
+    "singularName": "job-vacancy",
+    "pluralName": "job-vacancies",
+    "displayName": "Job Vacancy",
+    "description": "Open positions shown on the Careers / Vacancy page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "Junior",
+        "Intermediate",
+        "Senior"
+      ],
+      "required": true
+    },
+    "employmentType": {
+      "type": "enumeration",
+      "enum": [
+        "Full-time",
+        "Part-time"
+      ],
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "default": "Addis Ababa, Ethiopia"
+    },
+    "infoTags": {
+      "type": "component",
+      "component": "shared.list-item",
+      "repeatable": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "responsibilities": {
+      "type": "component",
+      "component": "shared.list-item",
+      "repeatable": true
+    },
+    "qualifications": {
+      "type": "component",
+      "component": "shared.list-item",
+      "repeatable": true
+    },
+    "whatWeOffer": {
+      "type": "component",
+      "component": "shared.list-item",
+      "repeatable": true
+    },
+    "applyLink": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

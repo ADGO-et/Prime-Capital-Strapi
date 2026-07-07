@@ -1,0 +1,60 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_page",
+  "info": {
+    "singularName": "about-page",
+    "pluralName": "about-pages",
+    "displayName": "About Page",
+    "description": "Editable text and images for the About page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "overview": {
+      "type": "richtext",
+      "required": true
+    },
+    "visionTitle": {
+      "type": "string",
+      "default": "Vision 2030",
+      "required": true
+    },
+    "vision": {
+      "type": "text",
+      "required": true
+    },
+    "missionTitle": {
+      "type": "string",
+      "default": "Mission",
+      "required": true
+    },
+    "mission": {
+      "type": "text",
+      "required": true
+    },
+    "coreValues": {
+      "type": "component",
+      "component": "shared.title-description",
+      "repeatable": true
+    },
+    "strategicContext": {
+      "type": "component",
+      "component": "shared.title-description",
+      "repeatable": true
+    },
+    "csrItems": {
+      "type": "component",
+      "component": "shared.title-description",
+      "repeatable": true
+    },
+    "orgChartImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

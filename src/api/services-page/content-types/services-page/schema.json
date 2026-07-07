@@ -1,0 +1,66 @@
+{
+  "kind": "singleType",
+  "collectionName": "services_page",
+  "info": {
+    "singularName": "services-page",
+    "pluralName": "services-pages",
+    "displayName": "Services Page",
+    "description": "Editable text for the Services page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "introHeading": {
+      "type": "string",
+      "default": "What We Offer",
+      "required": true
+    },
+    "introText": {
+      "type": "text",
+      "required": true
+    },
+    "services": {
+      "type": "component",
+      "component": "shared.title-description",
+      "repeatable": true
+    },
+    "processHeading": {
+      "type": "string",
+      "default": "How We Work",
+      "required": true
+    },
+    "processText": {
+      "type": "text",
+      "required": true
+    },
+    "processSteps": {
+      "type": "component",
+      "component": "shared.title-description",
+      "repeatable": true
+    },
+    "whyChooseHeading": {
+      "type": "string",
+      "default": "Why Clients Choose Prime Capital",
+      "required": true
+    },
+    "whyChooseText": {
+      "type": "text",
+      "required": true
+    },
+    "differentiators": {
+      "type": "component",
+      "component": "shared.title-description",
+      "repeatable": true
+    },
+    "ctaHeading": {
+      "type": "string",
+      "required": true
+    },
+    "ctaText": {
+      "type": "text",
+      "required": true
+    }
+  }
+}
