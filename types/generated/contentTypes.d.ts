@@ -524,6 +524,38 @@ export interface ApiContactPageContactPage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiFooterFooter extends Struct.SingleTypeSchema {
+  collectionName: 'footer';
+  info: {
+    description: 'Footer tagline and social media links';
+    displayName: 'Footer';
+    pluralName: 'footers';
+    singularName: 'footer';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    facebookUrl: Schema.Attribute.String;
+    linkedinUrl: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::footer.footer'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    tagline: Schema.Attribute.Text & Schema.Attribute.Required;
+    twitterUrl: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHeroSlideHeroSlide extends Struct.CollectionTypeSchema {
   collectionName: 'hero_slides';
   info: {
@@ -824,6 +856,39 @@ export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
     role: Schema.Attribute.String & Schema.Attribute.Required;
     socialLinks: Schema.Attribute.Component<'shared.social-link', true>;
     summary: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiVacancyPageVacancyPage extends Struct.SingleTypeSchema {
+  collectionName: 'vacancy_page';
+  info: {
+    description: 'Editable text for the Careers landing page\'s "Why join" section';
+    displayName: 'Vacancy Page';
+    pluralName: 'vacancy-pages';
+    singularName: 'vacancy-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::vacancy-page.vacancy-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    reasons: Schema.Attribute.Component<'shared.title-description', true>;
+    reasonsHeading: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Why join Prime Capital?'>;
+    reasonsSubtext: Schema.Attribute.Text & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1343,6 +1408,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::contact-page.contact-page': ApiContactPageContactPage;
+      'api::footer.footer': ApiFooterFooter;
       'api::hero-slide.hero-slide': ApiHeroSlideHeroSlide;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::job-vacancy.job-vacancy': ApiJobVacancyJobVacancy;
@@ -1350,6 +1416,7 @@ declare module '@strapi/strapi' {
       'api::news-article.news-article': ApiNewsArticleNewsArticle;
       'api::services-page.services-page': ApiServicesPageServicesPage;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
+      'api::vacancy-page.vacancy-page': ApiVacancyPageVacancyPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

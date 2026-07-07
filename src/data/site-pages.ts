@@ -144,3 +144,46 @@ export const servicesPageSeed = {
   ctaText:
     "Let's discuss how our services can help you achieve your strategic objectives and drive sustainable growth.",
 };
+
+export const vacancyPageSeed = {
+  reasonsHeading: "Why join Prime Capital?",
+  reasonsSubtext:
+    "Beyond a job – it's a chance to help architect a modern financial ecosystem while growing alongside a supportive, high‑caliber team.",
+  reasons: [
+    {
+      title: "Innovative Mission",
+      description:
+        "Help shape Ethiopia's emerging capital markets and build foundational financial infrastructure.",
+    },
+    {
+      title: "Inclusive Team Culture",
+      description:
+        "We value diverse perspectives, open communication, and collaborative problem‑solving.",
+    },
+    {
+      title: "Continuous Growth",
+      description:
+        "Access to mentorship, learning resources, and challenging projects that accelerate your career.",
+    },
+    {
+      title: "Broader Impact",
+      description:
+        "Your work contributes to sustainable economic development and empowers local businesses.",
+    },
+    {
+      title: "People‑First Flexibility",
+      description: "A balanced approach to work & life with supportive policies and autonomy.",
+    },
+    {
+      title: "Performance & Ownership",
+      description: "Clear goals, real responsibility, and recognition for moving the needle.",
+    },
+  ],
+};
+
+export const footerSeed = {
+  tagline: "Empowering Ethiopia's financial future through innovative investment banking solutions.",
+  linkedinUrl: "",
+  twitterUrl: "",
+  facebookUrl: "",
+};

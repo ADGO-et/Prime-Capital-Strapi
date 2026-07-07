@@ -2,7 +2,14 @@ import fs from 'fs';
 import path from 'path';
 import type { Core } from '@strapi/strapi';
 import { teamMembers } from './data/team-members';
-import { aboutPageSeed, contactPageSeed, homePageSeed, servicesPageSeed } from './data/site-pages';
+import {
+  aboutPageSeed,
+  contactPageSeed,
+  homePageSeed,
+  servicesPageSeed,
+  vacancyPageSeed,
+  footerSeed,
+} from './data/site-pages';
 import { heroSlides } from './data/hero-slides';
 import { listedCompanies } from './data/listed-companies';
 
@@ -21,6 +28,8 @@ const PUBLIC_READ_ACTIONS = [
   'api::services-page.services-page.find',
   'api::listed-company.listed-company.find',
   'api::listed-company.listed-company.findOne',
+  'api::vacancy-page.vacancy-page.find',
+  'api::footer.footer.find',
 ];
 
 async function setPublicPermissions(strapi: Core.Strapi) {
@@ -43,24 +52,41 @@ async function setPublicPermissions(strapi: Core.Strapi) {
   }
 }
 
+/**
+ * Uploads a seed image if present, otherwise returns null instead of throwing.
+ * Some deploy artifacts only ship `dist/` (binary assets under src/ aren't
+ * copied by the TS build), so this must never crash the boot process — a
+ * missing photo is a cosmetic gap an admin can fix later, not a reason to
+ * take the whole app down.
+ */
 async function uploadSeedPhoto(strapi: Core.Strapi, fileName: string) {
-  // src/ (not dist/) on purpose: binary assets aren't copied by the TS build.
   const filepath = path.join(process.cwd(), 'src', 'data', 'seed-images', fileName);
-  const stats = fs.statSync(filepath);
-  const mimetype = fileName.endsWith('.png') ? 'image/png' : 'image/jpeg';
 
-  const uploadService = strapi.plugin('upload').service('upload');
-  const [file] = await uploadService.upload({
-    data: {},
-    files: {
-      filepath,
-      originalFilename: fileName,
-      mimetype,
-      size: stats.size,
-    },
-  });
+  if (!fs.existsSync(filepath)) {
+    strapi.log.warn(`Seed image not found, skipping: ${filepath}`);
+    return null;
+  }
 
-  return file;
+  try {
+    const stats = fs.statSync(filepath);
+    const mimetype = fileName.endsWith('.png') ? 'image/png' : 'image/jpeg';
+
+    const uploadService = strapi.plugin('upload').service('upload');
+    const [file] = await uploadService.upload({
+      data: {},
+      files: {
+        filepath,
+        originalFilename: fileName,
+        mimetype,
+        size: stats.size,
+      },
+    });
+
+    return file;
+  } catch (err) {
+    strapi.log.warn(`Failed to upload seed image "${fileName}": ${(err as Error).message}`);
+    return null;
+  }
 }
 
 async function seedTeamMembers(strapi: Core.Strapi) {
@@ -79,7 +105,7 @@ async function seedTeamMembers(strapi: Core.Strapi) {
         edu: member.edu,
         summary: member.summary,
         appointed: member.appointed ?? false,
-        photo: photo.id,
+        photo: photo?.id ?? null,
       },
       status: 'published',
     });
@@ -96,7 +122,7 @@ async function seedAboutPage(strapi: Core.Strapi) {
   const orgChartImage = await uploadSeedPhoto(strapi, orgChartImageFile);
 
   await strapi.documents('api::about-page.about-page').create({
-    data: { ...data, orgChartImage: orgChartImage.id },
+    data: { ...data, orgChartImage: orgChartImage?.id ?? null },
     status: 'published',
   });
 
@@ -119,8 +145,17 @@ async function seedHeroSlides(strapi: Core.Strapi) {
   const existingCount = await strapi.documents('api::hero-slide.hero-slide').count({});
   if (existingCount > 0) return;
 
+  let seededCount = 0;
+
   for (const slide of heroSlides) {
     const image = await uploadSeedPhoto(strapi, slide.imageFile);
+
+    if (!image) {
+      // image is a required field on this content type; without one the
+      // entry would fail validation, so skip it rather than half-seed it.
+      strapi.log.warn(`Skipping hero slide "${slide.title}": no image available`);
+      continue;
+    }
 
     await strapi.documents('api::hero-slide.hero-slide').create({
       data: {
@@ -133,9 +168,10 @@ async function seedHeroSlides(strapi: Core.Strapi) {
       },
       status: 'published',
     });
+    seededCount += 1;
   }
 
-  strapi.log.info(`Seeded ${heroSlides.length} hero slides`);
+  strapi.log.info(`Seeded ${seededCount} of ${heroSlides.length} hero slides`);
 }
 
 async function seedHomePage(strapi: Core.Strapi) {
@@ -176,6 +212,29 @@ async function seedListedCompanies(strapi: Core.Strapi) {
   strapi.log.info(`Seeded ${listedCompanies.length} listed companies`);
 }
 
+async function seedVacancyPage(strapi: Core.Strapi) {
+  const existing = await strapi.documents('api::vacancy-page.vacancy-page').findFirst({});
+  if (existing) return;
+
+  await strapi.documents('api::vacancy-page.vacancy-page').create({
+    data: vacancyPageSeed,
+    status: 'published',
+  });
+
+  strapi.log.info('Seeded Vacancy page');
+}
+
+async function seedFooter(strapi: Core.Strapi) {
+  const existing = await strapi.documents('api::footer.footer').findFirst({});
+  if (existing) return;
+
+  await strapi.documents('api::footer.footer').create({
+    data: footerSeed,
+  });
+
+  strapi.log.info('Seeded Footer');
+}
+
 export default async function bootstrap({ strapi }: { strapi: Core.Strapi }) {
   await setPublicPermissions(strapi);
   await seedTeamMembers(strapi);
@@ -185,4 +244,6 @@ export default async function bootstrap({ strapi }: { strapi: Core.Strapi }) {
   await seedHomePage(strapi);
   await seedServicesPage(strapi);
   await seedListedCompanies(strapi);
+  await seedVacancyPage(strapi);
+  await seedFooter(strapi);
 }

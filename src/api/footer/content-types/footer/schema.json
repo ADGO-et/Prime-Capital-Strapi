@@ -1,0 +1,29 @@
+{
+  "kind": "singleType",
+  "collectionName": "footer",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "Footer",
+    "description": "Footer tagline and social media links"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tagline": {
+      "type": "text",
+      "required": true
+    },
+    "linkedinUrl": {
+      "type": "string"
+    },
+    "twitterUrl": {
+      "type": "string"
+    },
+    "facebookUrl": {
+      "type": "string"
+    }
+  }
+}

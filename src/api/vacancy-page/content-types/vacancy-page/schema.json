@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "vacancy_page",
+  "info": {
+    "singularName": "vacancy-page",
+    "pluralName": "vacancy-pages",
+    "displayName": "Vacancy Page",
+    "description": "Editable text for the Careers landing page's \"Why join\" section"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "reasonsHeading": {
+      "type": "string",
+      "default": "Why join Prime Capital?",
+      "required": true
+    },
+    "reasonsSubtext": {
+      "type": "text",
+      "required": true
+    },
+    "reasons": {
+      "type": "component",
+      "component": "shared.title-description",
+      "repeatable": true
+    }
+  }
+}
