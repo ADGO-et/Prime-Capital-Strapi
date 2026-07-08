@@ -1,0 +1,34 @@
+{
+  "kind": "singleType",
+  "collectionName": "our_team_page",
+  "info": {
+    "singularName": "our-team-page",
+    "pluralName": "our-team-pages",
+    "displayName": "Our Team Page",
+    "description": "Editable headings for the Our Team page sections"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "boardHeading": {
+      "type": "string",
+      "default": "Board of Directors",
+      "required": true
+    },
+    "boardSubtext": {
+      "type": "text",
+      "required": true
+    },
+    "executiveHeading": {
+      "type": "string",
+      "default": "Executive Management",
+      "required": true
+    },
+    "executiveSubtext": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

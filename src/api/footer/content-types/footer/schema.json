@@ -12,8 +12,30 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "tagline": {
       "type": "text",
+      "required": true
+    },
+    "quickLinks": {
+      "type": "component",
+      "component": "shared.link-item",
+      "repeatable": true
+    },
+    "serviceLinks": {
+      "type": "component",
+      "component": "shared.link-item",
+      "repeatable": true
+    },
+    "copyrightText": {
+      "type": "string",
+      "default": "Prime Capital S.C. — All Rights Reserved",
       "required": true
     },
     "linkedinUrl": {

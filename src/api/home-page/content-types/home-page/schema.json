@@ -33,6 +33,20 @@
     "strategicExcellenceText": {
       "type": "text",
       "required": true
+    },
+    "strengthsHeading": {
+      "type": "string",
+      "default": "Our Signature Strengths",
+      "required": true
+    },
+    "strengthsSubtext": {
+      "type": "text",
+      "required": true
+    },
+    "visionMissionHeading": {
+      "type": "string",
+      "default": "Guided by Vision, Driven by Mission",
+      "required": true
     }
   }
 }

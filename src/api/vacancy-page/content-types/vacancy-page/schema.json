@@ -12,6 +12,20 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "heroTitle": {
+      "type": "string",
+      "default": "Build the Future of Finance in Ethiopia",
+      "required": true
+    },
+    "heroSubtitle": {
+      "type": "text",
+      "required": true
+    },
+    "heroButtonText": {
+      "type": "string",
+      "default": "View Open Positions",
+      "required": true
+    },
     "reasonsHeading": {
       "type": "string",
       "default": "Why join Prime Capital?",

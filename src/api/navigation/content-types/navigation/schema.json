@@ -1,0 +1,48 @@
+{
+  "kind": "singleType",
+  "collectionName": "navigation",
+  "info": {
+    "singularName": "navigation",
+    "pluralName": "navigations",
+    "displayName": "Navigation",
+    "description": "Site navbar logo, main links, resources dropdown, and contact CTA"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "navLinks": {
+      "type": "component",
+      "component": "shared.link-item",
+      "repeatable": true
+    },
+    "resourcesLabel": {
+      "type": "string",
+      "default": "News and Resources",
+      "required": true
+    },
+    "resourcesLinks": {
+      "type": "component",
+      "component": "shared.link-item",
+      "repeatable": true
+    },
+    "ctaLabel": {
+      "type": "string",
+      "default": "Contact",
+      "required": true
+    },
+    "ctaHref": {
+      "type": "string",
+      "default": "/contact-us",
+      "required": true
+    }
+  }
+}

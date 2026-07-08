@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "listed_companies_page",
+  "info": {
+    "singularName": "listed-companies-page",
+    "pluralName": "listed-companies-pages",
+    "displayName": "Listed Companies Page",
+    "description": "Editable hero text for the ESX Listed Companies page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroTitle": {
+      "type": "string",
+      "default": "ESX Listed Companies",
+      "required": true
+    },
+    "heroDescription": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

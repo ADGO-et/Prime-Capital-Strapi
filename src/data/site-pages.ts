@@ -1,4 +1,5 @@
 export const aboutPageSeed = {
+  overviewHeading: "Corporate Overview",
   overview:
     "Prime Capital S.C. is a pioneering investment banking firm established to drive Ethiopia's capital market development. Founded with a clear vision to transform the financial landscape, we bring together deep market expertise and innovative solutions.\n\nOur foundation is built on regulatory excellence and a commitment to the highest standards of corporate governance. We operate with full compliance with Ethiopian securities regulations while maintaining international best practices.\n\nWith a team of seasoned professionals and strategic partnerships, we're positioned to deliver comprehensive investment banking and advisory services that meet the evolving needs of our clients.",
   visionTitle: "Vision 2030",
@@ -7,6 +8,7 @@ export const aboutPageSeed = {
   missionTitle: "Mission",
   mission:
     "To empower Ethiopian enterprises and investors through innovative, independent, and accessible investment banking solutions that unlock capital market opportunities.",
+  coreValuesHeading: "Core Values — The PRIME Principles",
   coreValues: [
     { title: "Partnership & Professionalism", description: "Collaborative excellence in every engagement" },
     { title: "Responsibility & Reliability", description: "Trusted stewardship of client interests" },
@@ -14,6 +16,7 @@ export const aboutPageSeed = {
     { title: "Market Leadership & Mutual Growth", description: "Pioneering sustainable progress together" },
     { title: "Excellence & Empowerment", description: "Delivering exceptional value and opportunity" },
   ],
+  strategicContextHeading: "Strategic Context",
   strategicContext: [
     {
       title: "HGER 2.0 Reform",
@@ -28,6 +31,26 @@ export const aboutPageSeed = {
       description: "Supporting privatization, infrastructure financing, and non-bank funding channels",
     },
   ],
+  governanceHeading: "Governance & Organizational Structure",
+  governanceCards: [
+    {
+      title: "Board of Directors",
+      description: "Provides oversight and strategic direction",
+    },
+    {
+      title: "Executive Management",
+      description: "Handles daily leadership and operations",
+    },
+    {
+      title: "Control & Support Units",
+      description: "Manages compliance, risk, finance, and IT",
+    },
+    {
+      title: "Internal Committees",
+      description: "Risk & Compliance, Nomination & Remuneration and Audit",
+    },
+  ],
+  csrHeading: "Corporate Social Responsibility",
   csrItems: [
     {
       title: "Education & Empowerment",
@@ -85,6 +108,9 @@ export const homePageSeed = {
   strategicExcellenceHeading: "Strategic Excellence at the Heart of Ethiopia's Transformation",
   strategicExcellenceText:
     "At the heart of Ethiopia's economic transformation, Prime Capital leads with deep regulatory insight, institutional partnerships, and world-class execution — shaping a sustainable future for businesses and investors.",
+  strengthsHeading: "Our Signature Strengths",
+  strengthsSubtext: "Four pillars that define our commitment to Ethiopia's financial excellence",
+  visionMissionHeading: "Guided by Vision, Driven by Mission",
 };
 
 export const servicesPageSeed = {
@@ -146,6 +172,10 @@ export const servicesPageSeed = {
 };
 
 export const vacancyPageSeed = {
+  heroTitle: "Build the Future of Finance in Ethiopia",
+  heroSubtitle:
+    "Join Prime Capital and be part of a pioneering team shaping Ethiopia's capital markets. We're looking for talented individuals ready to make a lasting impact.",
+  heroButtonText: "View Open Positions",
   reasonsHeading: "Why join Prime Capital?",
   reasonsSubtext:
     "Beyond a job – it's a chance to help architect a modern financial ecosystem while growing alongside a supportive, high‑caliber team.",
@@ -181,8 +211,59 @@ export const vacancyPageSeed = {
   ],
 };
 
+export const newsPageSeed = {
+  heroTitle: "Latest Insights & News",
+  heroDescription:
+    "Stay informed with Prime Capital's latest updates, industry insights, and thought leadership. Discover articles covering market trends, financial innovations, company milestones, and expert perspectives on Ethiopia's evolving capital markets.",
+};
+
+export const ourTeamPageSeed = {
+  boardHeading: "Board of Directors",
+  boardSubtext:
+    "Our distinguished board brings directors of combined expertise in finance, technology, and strategic leadership.",
+  executiveHeading: "Executive Management",
+  executiveSubtext: "Experienced leaders driving operational excellence and strategic innovation.",
+};
+
+export const listedCompaniesPageSeed = {
+  heroTitle: "ESX Listed Companies",
+  heroDescription:
+    "Explore companies listed on the Ethiopian Securities Exchange. Find key disclosures, market classifications, and essential investor information in one place.",
+};
+
+export const navigationSeed = {
+  logoFile: "logoblack.png",
+  navLinks: [
+    { label: "Home", url: "/" },
+    { label: "About Us", url: "/about" },
+    { label: "Services", url: "/services" },
+    { label: "Our Team", url: "/our-team" },
+  ],
+  resourcesLabel: "News and Resources",
+  resourcesLinks: [
+    { label: "News and Updates", url: "/news" },
+    { label: "Jobs", url: "/vacancy/jobs" },
+  ],
+  ctaLabel: "Contact",
+  ctaHref: "/contact-us",
+};
+
 export const footerSeed = {
+  logoFile: "logoblack.png",
   tagline: "Empowering Ethiopia's financial future through innovative investment banking solutions.",
+  quickLinks: [
+    { label: "Home", url: "/" },
+    { label: "About Us", url: "/about" },
+    { label: "Services", url: "/services" },
+    { label: "Contact", url: "/contact-us" },
+  ],
+  serviceLinks: [
+    { label: "Investment Banking", url: "/services" },
+    { label: "M&A Advisory", url: "/services" },
+    { label: "Capital Markets", url: "/services" },
+    { label: "Corporate Restructuring", url: "/services" },
+  ],
+  copyrightText: "Prime Capital S.C. — All Rights Reserved",
   linkedinUrl: "",
   twitterUrl: "",
   facebookUrl: "",

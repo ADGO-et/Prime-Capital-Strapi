@@ -12,6 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "overviewHeading": {
+      "type": "string",
+      "default": "Corporate Overview",
+      "required": true
+    },
     "overview": {
       "type": "richtext",
       "required": true
@@ -34,15 +39,40 @@
       "type": "text",
       "required": true
     },
+    "coreValuesHeading": {
+      "type": "string",
+      "default": "Core Values — The PRIME Principles",
+      "required": true
+    },
     "coreValues": {
       "type": "component",
       "component": "shared.title-description",
       "repeatable": true
     },
+    "strategicContextHeading": {
+      "type": "string",
+      "default": "Strategic Context",
+      "required": true
+    },
     "strategicContext": {
       "type": "component",
       "component": "shared.title-description",
       "repeatable": true
+    },
+    "governanceHeading": {
+      "type": "string",
+      "default": "Governance & Organizational Structure",
+      "required": true
+    },
+    "governanceCards": {
+      "type": "component",
+      "component": "shared.title-description",
+      "repeatable": true
+    },
+    "csrHeading": {
+      "type": "string",
+      "default": "Corporate Social Responsibility",
+      "required": true
     },
     "csrItems": {
       "type": "component",
