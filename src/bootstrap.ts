@@ -132,7 +132,7 @@ async function seedTeamMembers(strapi: Core.Strapi) {
 }
 
 async function seedAboutPage(strapi: Core.Strapi) {
-  const existing = await strapi.documents('api::about-page.about-page').findFirst({});
+  const existing = await strapi.documents('api::about-page.about-page').findFirst({ populate: '*' });
 
   if (!existing) {
     const { orgChartImageFile, ...data } = aboutPageSeed;
@@ -172,15 +172,43 @@ async function seedAboutPage(strapi: Core.Strapi) {
 }
 
 async function seedContactPage(strapi: Core.Strapi) {
-  const existing = await strapi.documents('api::contact-page.contact-page').findFirst({});
-  if (existing) return;
+  const existing = await strapi.documents('api::contact-page.contact-page').findFirst({ populate: '*' });
 
-  await strapi.documents('api::contact-page.contact-page').create({
-    data: contactPageSeed,
-    status: 'published',
-  });
+  if (!existing) {
+    await strapi.documents('api::contact-page.contact-page').create({
+      data: contactPageSeed,
+      status: 'published',
+    });
+    strapi.log.info('Seeded Contact page');
+    return;
+  }
 
-  strapi.log.info('Seeded Contact page');
+  // Backfill fields added after the page was first seeded, so upgrades
+  // don't leave required fields empty on the existing record.
+  const existingRecord = existing as Record<string, unknown>;
+  const missing: Record<string, unknown> = {};
+  for (const key of [
+    'visitUsLabel',
+    'emailUsLabel',
+    'emailLabel',
+    'orderEmail',
+    'orderEmailLabel',
+    'callUsLabel',
+    'businessHoursLabel',
+    'newClientInquiriesHeading',
+    'careerOpportunitiesHeading',
+  ] as const) {
+    if (existingRecord[key] == null) missing[key] = contactPageSeed[key];
+  }
+
+  if (Object.keys(missing).length > 0) {
+    await strapi.documents('api::contact-page.contact-page').update({
+      documentId: existing.documentId,
+      data: missing,
+      status: 'published',
+    });
+    strapi.log.info(`Backfilled Contact page fields: ${Object.keys(missing).join(', ')}`);
+  }
 }
 
 async function seedHeroSlides(strapi: Core.Strapi) {
@@ -217,7 +245,7 @@ async function seedHeroSlides(strapi: Core.Strapi) {
 }
 
 async function seedHomePage(strapi: Core.Strapi) {
-  const existing = await strapi.documents('api::home-page.home-page').findFirst({});
+  const existing = await strapi.documents('api::home-page.home-page').findFirst({ populate: '*' });
 
   if (!existing) {
     await strapi.documents('api::home-page.home-page').create({
@@ -273,7 +301,7 @@ async function seedListedCompanies(strapi: Core.Strapi) {
 }
 
 async function seedVacancyPage(strapi: Core.Strapi) {
-  const existing = await strapi.documents('api::vacancy-page.vacancy-page').findFirst({});
+  const existing = await strapi.documents('api::vacancy-page.vacancy-page').findFirst({ populate: '*' });
 
   if (!existing) {
     await strapi.documents('api::vacancy-page.vacancy-page').create({
@@ -357,7 +385,7 @@ async function seedNavigation(strapi: Core.Strapi) {
 }
 
 async function seedFooter(strapi: Core.Strapi) {
-  const existing = await strapi.documents('api::footer.footer').findFirst({});
+  const existing = await strapi.documents('api::footer.footer').findFirst({ populate: '*' });
 
   if (!existing) {
     const { logoFile, ...data } = footerSeed;
@@ -374,7 +402,7 @@ async function seedFooter(strapi: Core.Strapi) {
   // don't leave required fields empty on the existing record.
   const existingRecord = existing as Record<string, unknown>;
   const missing: Record<string, unknown> = {};
-  for (const key of ['quickLinks', 'serviceLinks', 'copyrightText'] as const) {
+  for (const key of ['quickLinks', 'serviceLinks', 'copyrightText', 'complaintsText'] as const) {
     if (existingRecord[key] == null) missing[key] = footerSeed[key];
   }
   if (existingRecord.logo == null) {

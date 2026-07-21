@@ -12,16 +12,49 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "visitUsLabel": {
+      "type": "string",
+      "default": "Visit Us",
+      "required": true
+    },
     "address": {
       "type": "text",
+      "required": true
+    },
+    "emailUsLabel": {
+      "type": "string",
+      "default": "Email Us",
       "required": true
     },
     "email": {
       "type": "email",
       "required": true
     },
+    "emailLabel": {
+      "type": "string",
+      "default": "general enquiry",
+      "required": true
+    },
+    "orderEmail": {
+      "type": "email"
+    },
+    "orderEmailLabel": {
+      "type": "string",
+      "default": "trade order",
+      "required": true
+    },
+    "callUsLabel": {
+      "type": "string",
+      "default": "Call Us",
+      "required": true
+    },
     "phone": {
       "type": "string",
+      "required": true
+    },
+    "businessHoursLabel": {
+      "type": "string",
+      "default": "Business Hours",
       "required": true
     },
     "weekdayHours": {
@@ -37,8 +70,18 @@
       "type": "string",
       "required": true
     },
+    "newClientInquiriesHeading": {
+      "type": "string",
+      "default": "New Client Inquiries",
+      "required": true
+    },
     "newClientInquiriesText": {
       "type": "text",
+      "required": true
+    },
+    "careerOpportunitiesHeading": {
+      "type": "string",
+      "default": "Career Opportunities",
       "required": true
     },
     "careerOpportunitiesText": {

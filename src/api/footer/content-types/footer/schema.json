@@ -38,14 +38,15 @@
       "default": "Prime Capital S.C. — All Rights Reserved",
       "required": true
     },
-    "linkedinUrl": {
-      "type": "string"
+    "complaintsText": {
+      "type": "string",
+      "default": "For complaint and inquiries contact us at",
+      "required": true
     },
-    "twitterUrl": {
-      "type": "string"
-    },
-    "facebookUrl": {
-      "type": "string"
+    "socialLinks": {
+      "type": "component",
+      "component": "shared.social-link",
+      "repeatable": true
     }
   }
 }

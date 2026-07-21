@@ -67,15 +67,24 @@ export const aboutPageSeed = {
 };
 
 export const contactPageSeed = {
+  visitUsLabel: "Visit Us",
   address: "Bole Road, Abyssinia Real Estate bldg (12th floor) adjacent to Ethio Ceramics",
+  emailUsLabel: "Email Us",
   email: "Info@primecapitalsc.com",
+  emailLabel: "general enquiry",
+  orderEmail: "order@primecapitalsc.com",
+  orderEmailLabel: "trade order",
+  callUsLabel: "Call Us",
   phone: "6309",
+  businessHoursLabel: "Business Hours",
   weekdayHours: "Monday - Friday, 8:00 AM - 5:00 PM EAT",
   saturdayHours: "Saturday, 8:00 AM - 12:00 PM EAT",
   mapEmbedUrl:
     "https://www.openstreetmap.org/export/embed.html?bbox=38.77,8.98,38.79,9.00&layer=mapnik&marker=8.991646,38.782494",
+  newClientInquiriesHeading: "New Client Inquiries",
   newClientInquiriesText:
     "Interested in our investment banking and advisory services? We'd love to hear from you. Our team will respond within 24 hours to discuss how we can support your business objectives.",
+  careerOpportunitiesHeading: "Career Opportunities",
   careerOpportunitiesText:
     "Join our team of talented professionals and help shape Ethiopia's financial future. We value excellence, integrity, and innovation. We're always looking for exceptional individuals who share our commitment to excellence, integrity, and innovation.",
 };
@@ -248,6 +257,17 @@ export const navigationSeed = {
   ctaHref: "/contact-us",
 };
 
+export type SocialPlatform =
+  | "linkedin"
+  | "instagram"
+  | "twitter"
+  | "youtube"
+  | "telegram"
+  | "facebook"
+  | "whatsapp"
+  | "tiktok"
+  | "email";
+
 export const footerSeed = {
   logoFile: "logoblack.png",
   tagline: "Empowering Ethiopia's financial future through innovative investment banking solutions.",
@@ -264,7 +284,6 @@ export const footerSeed = {
     { label: "Corporate Restructuring", url: "/services" },
   ],
   copyrightText: "Prime Capital S.C. — All Rights Reserved",
-  linkedinUrl: "",
-  twitterUrl: "",
-  facebookUrl: "",
+  complaintsText: "For complaint and inquiries contact us at",
+  socialLinks: [] as { platform: SocialPlatform; url: string }[],
 };
